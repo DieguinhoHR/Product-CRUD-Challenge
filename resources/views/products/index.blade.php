@@ -29,11 +29,11 @@
                 <td>{!! $product->stock !!}</td>
                 <td>{!! $product->tag->name !!}</td>
                 <td>
-                    {{--{!! Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $product->id]]) !!}--}}
-                        {{--<button type="submit" class="btn btn-danger">--}}
-                            {{--Excluir--}}
-                        {{--</button>--}}
-                    {{--{!! Form::close() !!}--}}
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $product->id]]) !!}
+                        <button type="submit" class="btn btn-danger">
+                            Excluir
+                        </button>
+                    {!! Form::close() !!}
                 </td>
             </tr>
         @endforeach

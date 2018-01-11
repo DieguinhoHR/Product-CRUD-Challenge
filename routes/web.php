@@ -6,4 +6,4 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
-Route::get('/products', 'ProductController@index');
+Route::resource('/products', 'ProductController');
