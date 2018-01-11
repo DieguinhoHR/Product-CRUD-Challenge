@@ -22,11 +22,15 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('products.create');
+        $tags = $this->repository->allTags();
+
+        return view('products.create', compact('tags'));
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        
+        $this->repository->delete($id);
+
+        return redirect('products');
     }
 }

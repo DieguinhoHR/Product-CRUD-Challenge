@@ -12,23 +12,56 @@
 
     @include('errors.errors')
 
-    {!! Form::open(['url' => 'products', 'class' => 'form-horizontal row']) !!}
+    {!! Form::open([
+        'url' => 'products',
+        'class' => 'form-horizontal row',
+         'files' => 'true'
+    ]) !!}
 
-    <div class="col-lg-6">
-        {!! Form::label('nomeCompleto', 'Nome do Completo') !!}
-        {!! Form::text('nomeCompleto', null, ['class' => 'form-control',
-        'placeholder' => 'Digite seu Nome Completo']) !!}
+    <br />
+
+    <div class="form-group">
+        <div class="col-lg-4">
+            {!! Form::label('title', 'Titulo') !!}
+            {!! Form::text('title', null, ['class' => 'form-control',
+            'placeholder' => 'Digite o titulo']) !!}
+        </div>
+
+        <div class="col-lg-4">
+            {!! Form::label('stock', 'Qtd. estoque') !!}
+            {!! Form::text('stock', null, ['class' => 'form-control',
+            'placeholder' => 'Informe a quantidade em estoque']) !!}
+        </div>
+
+        <div class="col-lg-4">
+            {{ Form::label('tag_id', 'Tag') }}
+            {{ Form::select('tag_id', $tags, null,
+                ['class' => 'form-control','placeholder' => 'Selecione uma tag']) }}
+        </div>
     </div>
 
-    <!--<div class="col-lg-6">
-        {{ Form::label('clube_id', 'Clube') }}
-        {{ Form::select('clube_id', $clubes, null,
-            ['class' => 'form-control','placeholder'=>'Selecione']) }}
-    </div>-->
+    <div class="form-group">
+        <div class="col-xs-4">
+            {{ Form::label('image', 'Imagem') }}
+            {{ Form::file('image') }}
+        </div>
+    </div>
 
-    <div class="col-lg-12">
-        <br />
-        {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
+    <div class="form-group">
+        <div class="col-lg-12">
+            {!! Form::label('description', 'Descrição') !!}
+            {!! Form::textarea('description', null, [
+                'size' => '30x6',
+                'class' => 'form-control',
+                'placeholder' => 'Informe a descrição do produto'
+            ]) !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-12">
+            {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
+        </div>
     </div>
 
     {!! Form::close() !!}

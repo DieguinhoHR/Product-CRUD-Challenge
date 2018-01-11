@@ -7,7 +7,7 @@
 
     <hr>
 
-    {!! link_to('products/create', 'Novo Registor', ['class' => 'btn btn-primary navbar-left']) !!}
+    {!! link_to('products/create', 'Novo Registo', ['class' => 'btn btn-primary navbar-left']) !!}
 
     <table class="table table table-striped table-hover">
         <thead>
