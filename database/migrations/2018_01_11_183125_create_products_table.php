@@ -14,22 +14,23 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
+            $table->engine = "InnoDB";
+
             $table->increments('id')->index('id');
+            $table->integer('tag_id')->unsigned()->index();
             $table->string('title')->min(6);
             $table->text('description')->max(4000)->nullable();
             $table->string('image');
             $table->integer('stock');
 
-            $table->integer('tag_id')->nullable();
-
             $table->foreign('tag_id')
                   ->references('id')
-                  ->on('tags')
-                  ->onDelete('cascade');
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade')
+                  ->on('tags');
 
-            $table->timestamps();
             $table->softDeletes();
-
+            $table->timestamps();
         });
     }
 
