@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use Illuminate\Http\Request;
+use App\Repositories\Product\IProductRepository;
 
 class ProductController extends Controller
 {
+    private $repository;
+
+    public function __construct(IProductRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function index()
     {
-        $products = Product::all();
-
-        return $this->response()->json($products);
+        return $this->repository->all();
     }
 }
