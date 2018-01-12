@@ -11,7 +11,7 @@ class ProductController extends Controller
 
     public function __construct(IProductRepository $repository)
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
 
         $this->repository = $repository;
     }
@@ -59,6 +59,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $this->repository->delete($id);
+
+        session()->flash('flash_message', 'Registro excluido com sucesso!');
 
         return redirect('products');
     }
