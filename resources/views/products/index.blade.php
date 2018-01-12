@@ -61,6 +61,8 @@
         @endforeach
         </tbody>
     </table>
+    
+    {{ $products->links() }}
 
     @unless(count($products))
         <p class="text-center">Não existem produtos cadastrados!</p>

@@ -11,7 +11,7 @@ class ProductRepository implements IProductRepository
 {
     public function all()
     {
-        return Product::all();
+        return Product::paginate(5);
     }
 
     public function allTags()
@@ -32,8 +32,7 @@ class ProductRepository implements IProductRepository
     public function searchProduct($query)
     {
         return Product::where('title', 'LIKE', "%$query%")
-            //->orderBy('created_at', 'desc')->paginate(15);
-            ->orderBy('created_at', 'desc')->get();
+            ->orderBy('created_at', 'desc')->paginate(5);
     }
 
     public function update($id, ProductRequest $request)
