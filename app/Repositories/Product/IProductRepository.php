@@ -12,4 +12,5 @@ interface IProductRepository
     public function save(ProductRequest $request);
     public function find($id);
     public function update($id, ProductRequest $request);
+    public function searchProduct($query);
 }

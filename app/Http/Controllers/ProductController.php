@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Repositories\Product\IProductRepository;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -16,9 +17,12 @@ class ProductController extends Controller
         $this->repository = $repository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = $this->repository->all();
+        $query = $request->input('query');
+
+        $products = $query ? $this->repository->searchProduct($query)
+                           : $this->repository->all();
 
         return view('products.index', compact('products'));
     }
