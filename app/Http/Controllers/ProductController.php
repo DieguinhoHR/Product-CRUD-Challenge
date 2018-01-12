@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Repositories\Product\IProductRepository;
 
 class ProductController extends Controller
@@ -25,6 +26,15 @@ class ProductController extends Controller
         $tags = $this->repository->allTags();
 
         return view('products.create', compact('tags'));
+    }
+
+    public function store(ProductRequest $request)
+    {
+        $this->repository->save($request);
+
+        $request->session()->flash('flash_message', 'Registro inserido com sucesso!');
+
+        return redirect('products');
     }
 
     public function destroy($id)

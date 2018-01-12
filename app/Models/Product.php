@@ -10,7 +10,8 @@ class Product extends Model
         'title',
         'description',
         'stock',
-        'tag_id'
+        'tag_id',
+        'image'
     ];
 
     public function tag()

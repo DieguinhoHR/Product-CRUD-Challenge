@@ -29,7 +29,7 @@
 
         <div class="col-lg-4">
             {!! Form::label('stock', 'Qtd. estoque') !!}
-            {!! Form::text('stock', null, ['class' => 'form-control',
+            {!! Form::number('stock', null, ['class' => 'form-control',
             'placeholder' => 'Informe a quantidade em estoque']) !!}
         </div>
 

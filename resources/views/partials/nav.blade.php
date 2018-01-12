@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <!-- Branding Image -->
+            <!-- BrandProductImagemage -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
