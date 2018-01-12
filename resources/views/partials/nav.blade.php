@@ -21,7 +21,7 @@
             @if (Auth::user())
                 <ul class="nav navbar-nav">
                     <li><a href="/products">Produtos</a></li>
-                    <li><a href="/products">10 tags mais usados</a></li>
+                    <li><a href="/tags">10 tags mais usados</a></li>
                 </ul>
             @endif
 

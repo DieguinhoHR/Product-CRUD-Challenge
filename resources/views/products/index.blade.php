@@ -7,6 +7,21 @@
 
     <hr>
 
+    {!!  Form::open(['url' => 'products', 'method' => 'get', 'class' => 'form-inline', 'role' => 'form']) !!}
+         <div class='form-group'>
+            {!! Form::input('search', 'query', null, [
+                'placeholder'    => 'Digite o titulo',
+                'size'           => '50px',
+                'class'          => 'form-control',
+                'data-toggle'    => 'tooltip',
+                'data-placement' => 'right',
+                'title'          => 'Digite o titulo e tecle Enter para realizar uma busca'
+            ]) !!}
+         </div>
+    {!! Form::close() !!}
+
+    <hr>
+
     {!! link_to('products/create', 'Novo Registo', ['class' => 'btn btn-primary navbar-left']) !!}
 
     <table class="table table table-striped table-hover">
@@ -46,6 +61,8 @@
         @endforeach
         </tbody>
     </table>
+
+    {{ $products->links() }}
 
     @unless(count($products))
         <p class="text-center">Não existem produtos cadastrados!</p>
