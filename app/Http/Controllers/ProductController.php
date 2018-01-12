@@ -11,6 +11,8 @@ class ProductController extends Controller
 
     public function __construct(IProductRepository $repository)
     {
+        //$this->middleware('auth');
+
         $this->repository = $repository;
     }
 
@@ -40,7 +42,7 @@ class ProductController extends Controller
     {
         $this->repository->update($id, $request);
 
-        $request->session()->flash('flash_message', 'Registro inserido com sucesso!');
+        $request->session()->flash('flash_message', 'Registro atualizado com sucesso!');
 
         return redirect('products');
     }
