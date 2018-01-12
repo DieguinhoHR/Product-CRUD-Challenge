@@ -2,15 +2,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <h4>
+    <h1>
         <span class="glyphicon glyphicon-floppy-open"></span> Atualizar Produto
 
         <a href="{{ URL::to('products') }}" class="btn btn-info navbar-right">
             <span class="glyphicon glyphicon-chevron-left"></span> Voltar
         </a>
-    </h4>
-
-    @include('errors.errors')
+    </h1>
 
     {!! Form::model($product, [
         'method' => 'PATCH',
@@ -21,6 +19,8 @@
     ]) !!}
 
     <br />
+
+    @include('errors.errors')
 
     <div class="form-group">
         <div class="col-lg-4">

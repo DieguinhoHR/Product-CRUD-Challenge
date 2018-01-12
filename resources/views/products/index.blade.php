@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h4>
+    <h1>
         <span class="glyphicon glyphicon-sort-by-alphabet"></span> Produtos
-    </h4>
+    </h1>
 
     <hr>
 
