@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <h4>
+    <h1>
         <span class="glyphicon glyphicon-sort-by-alphabet"></span> Produtos
-    </h4>
+    </h1>
 
     <hr>
 
-    {!! link_to('products/create', 'Novo Registor', ['class' => 'btn btn-primary navbar-left']) !!}
+    {!! link_to('products/create', 'Novo Registo', ['class' => 'btn btn-primary navbar-left']) !!}
 
     <table class="table table table-striped table-hover">
         <thead>
@@ -28,6 +28,13 @@
                 <td>{!! $product->description !!}</td>
                 <td>{!! $product->stock !!}</td>
                 <td>{!! $product->tag->name !!}</td>
+                <td>
+                    {!! Form::open(['method' => 'GET', 'route' => ['products.edit', $product->id]]) !!}
+                        <button type="submit" class="btn btn-success">
+                            Atualizar
+                        </button>
+                    {!! Form::close() !!}
+                </td>
                 <td>
                     {!! Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $product->id]]) !!}
                         <button type="submit" class="btn btn-danger">
