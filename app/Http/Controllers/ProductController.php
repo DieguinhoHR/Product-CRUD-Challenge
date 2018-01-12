@@ -30,12 +30,7 @@ class ProductController extends Controller
 
     public function listTeenTagsMoreUseds()
     {
-        $tags = DB::table('products')
-            ->join('tags', 'tags.id', '=', 'products.tag_id')
-            ->select('tags.id', 'tags.name', DB::raw('count(products.tag_id) as ranking'))
-            ->groupBy('products.tag_id')
-            ->orderBy('ranking', 'DESC')
-            ->get();
+        $tags = $this->repository->listAllTags();
 
         return view('products.tags', compact('tags'));
     }

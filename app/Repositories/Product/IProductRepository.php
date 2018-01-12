@@ -13,4 +13,5 @@ interface IProductRepository
     public function find($id);
     public function update($id, ProductRequest $request);
     public function searchProduct($query);
+    public function listAllTags();
 }

@@ -6,12 +6,22 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Tag;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductRepository implements IProductRepository
 {
     public function all()
     {
         return Product::paginate(5);
+    }
+
+    public function listAllTags()
+    {
+        return Product::join('tags', 'tags.id', '=', 'products.tag_id')
+            ->select('tags.id', 'tags.name', DB::raw('count(products.tag_id) as ranking'))
+            ->groupBy('products.tag_id')
+            ->orderBy('ranking', 'DESC')
+            ->get();
     }
 
     public function allTags()
