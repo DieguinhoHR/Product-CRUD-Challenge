@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Repositories\Product\IProductRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -25,6 +26,18 @@ class ProductController extends Controller
                            : $this->repository->all();
 
         return view('products.index', compact('products'));
+    }
+
+    public function listTeenTagsMoreUseds()
+    {
+        $tags = DB::table('products')
+            ->join('tags', 'tags.id', '=', 'products.tag_id')
+            ->select('tags.id', 'tags.name', DB::raw('count(products.tag_id) as ranking'))
+            ->groupBy('products.tag_id')
+            ->orderBy('ranking', 'DESC')
+            ->get();
+
+        return view('products.tags', compact('tags'));
     }
 
     public function create()

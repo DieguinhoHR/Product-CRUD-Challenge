@@ -61,7 +61,7 @@
         @endforeach
         </tbody>
     </table>
-    
+
     {{ $products->links() }}
 
     @unless(count($products))
