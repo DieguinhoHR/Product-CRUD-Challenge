@@ -29,6 +29,13 @@
                 <td>{!! $product->stock !!}</td>
                 <td>{!! $product->tag->name !!}</td>
                 <td>
+                    {!! Form::open(['method' => 'GET', 'route' => ['products.edit', $product->id]]) !!}
+                        <button type="submit" class="btn btn-success">
+                            Atualizar
+                        </button>
+                    {!! Form::close() !!}
+                </td>
+                <td>
                     {!! Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $product->id]]) !!}
                         <button type="submit" class="btn btn-danger">
                             Excluir

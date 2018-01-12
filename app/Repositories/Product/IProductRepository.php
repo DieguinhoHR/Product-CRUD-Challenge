@@ -10,4 +10,6 @@ interface IProductRepository
     public function delete($id);
     public function allTags();
     public function save(ProductRequest $request);
+    public function find($id);
+    public function update($id, ProductRequest $request);
 }

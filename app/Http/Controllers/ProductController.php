@@ -28,6 +28,23 @@ class ProductController extends Controller
         return view('products.create', compact('tags'));
     }
 
+    public function edit($id)
+    {
+        $product = $this->repository->find($id);
+        $tags = $this->repository->allTags();
+
+        return view('products.edit', compact('product', 'tags'));
+    }
+
+    public function update($id, ProductRequest $request)
+    {
+        $this->repository->update($id, $request);
+
+        $request->session()->flash('flash_message', 'Registro inserido com sucesso!');
+
+        return redirect('products');
+    }
+
     public function store(ProductRequest $request)
     {
         $this->repository->save($request);
